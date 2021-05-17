@@ -38,8 +38,6 @@ class App extends React.Component {
       this.setState({input:input});
 
       alert('Demo Form is submitted!');
-    } else {
-      alert(this.state.errors);
     }
   }
 
@@ -57,8 +55,7 @@ class App extends React.Component {
       isValid = false;
       errors["email"] = "Please enter your email address";
     }
-
-    if (typeof input["email"] !== undefined) {
+    else if (typeof input["email"] !== undefined) {
       var pattern =  new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
       if (!pattern.test(input["email"])) {
         isValid = false;
@@ -69,6 +66,10 @@ class App extends React.Component {
     if (!input["password"]) {
       isValid = false;
       errors["password"] = "Please enter your password";
+    }
+    if (input["password"].length < 7) { 
+      isValid = false;
+      errors["password"] = "Your password need to have at least 7 or more characters"
     }
     this.setState({
       errors: errors
