@@ -20,3 +20,7 @@ input.submit-btn {
   height: 30px;
   margin-left: 75px;
 }
+
+div.text-danger {
+  color: red
+}
