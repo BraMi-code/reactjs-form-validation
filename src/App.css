@@ -9,6 +9,7 @@
 form {
   background-color: #d2f0ce;
   padding: 15px;
+  border: 1px solid black
 }
 
 form label input {
